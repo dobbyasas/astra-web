@@ -35,10 +35,9 @@ describe('Astra web shell', () => {
     expect(
       screen.getByRole('heading', { name: 'Movies & Series' }),
     ).toBeInTheDocument()
-    expect(screen.getAllByRole('link', { name: 'Dune: Part Two' })[0]).toHaveAttribute(
-      'href',
-      '/watch/dune-part-two',
-    )
+    expect(
+      screen.getAllByRole('link', { name: 'Dune: Part Two' })[0],
+    ).toHaveAttribute('href', '/watch/dune-part-two')
   })
 
   it('opens a series page with playable episodes', () => {
