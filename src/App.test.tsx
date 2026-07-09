@@ -1,38 +1,58 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 
 import App from './App'
 
 function renderApp(initialPath = '/') {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: false,
+      },
+    },
+  })
+
   return render(
-    <MemoryRouter initialEntries={[initialPath]}>
-      <App />
-    </MemoryRouter>,
+    <QueryClientProvider client={queryClient}>
+      <MemoryRouter initialEntries={[initialPath]}>
+        <App />
+      </MemoryRouter>
+    </QueryClientProvider>,
   )
 }
 
 describe('Astra web shell', () => {
-  it('renders the home experience with the featured title and rails', () => {
+  it('starts on search and browsing with continue watching', () => {
     renderApp()
 
     expect(
-      screen.getByRole('heading', { level: 1, name: 'Dune: Part Two' }),
+      screen.getByRole('searchbox', { name: 'Search movies and series' }),
     ).toBeInTheDocument()
     expect(
-      screen.getByRole('heading', { name: 'Top Matches' }),
+      screen.getByRole('heading', { name: 'Continue Watching' }),
     ).toBeInTheDocument()
     expect(
-      screen.getByRole('link', { name: 'Play Dune: Part Two' }),
-    ).toHaveAttribute('href', '/watch/dune-part-two')
+      screen.getByRole('heading', { name: 'Movies & Series' }),
+    ).toBeInTheDocument()
+    expect(screen.getAllByRole('link', { name: 'Dune: Part Two' })[0]).toHaveAttribute(
+      'href',
+      '/watch/dune-part-two',
+    )
   })
 
-  it('renders a title detail route', () => {
-    renderApp('/title/arrival')
+  it('opens a series page with playable episodes', () => {
+    renderApp('/series/the-meridian')
 
-    expect(screen.getByRole('heading', { name: 'Arrival' })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Play Arrival' })).toHaveAttribute(
+    expect(
+      screen.getByRole('heading', { name: 'The Meridian' }),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { name: 'Episodes' }),
+    ).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /S01E01/ })).toHaveAttribute(
       'href',
-      '/watch/arrival',
+      '/watch/the-meridian/the-meridian-s01e01',
     )
   })
 })

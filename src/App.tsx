@@ -2,7 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 
 import { AppShell } from './components/AppShell'
 import { HomePage } from './pages/HomePage'
-import { TitlePage } from './pages/TitlePage'
+import { SeriesPage } from './pages/SeriesPage'
 import { WatchPage } from './pages/WatchPage'
 import './App.css'
 
@@ -11,8 +11,9 @@ function App() {
     <Routes>
       <Route element={<AppShell />}>
         <Route index element={<HomePage />} />
-        <Route path="title/:titleId" element={<TitlePage />} />
+        <Route path="series/:titleId" element={<SeriesPage />} />
         <Route path="watch/:titleId" element={<WatchPage />} />
+        <Route path="watch/:titleId/:episodeId" element={<WatchPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
