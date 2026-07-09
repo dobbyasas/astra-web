@@ -31,9 +31,7 @@ export function Hero({ title }: HeroProps) {
         <h1 id="featured-title">{title.name}</h1>
         <p className="hero-tagline">{title.tagline}</p>
         <div className="meta-line" aria-label="Title details">
-          <span className="match">{title.match}% match</span>
           <span>{title.year}</span>
-          <span className="pill">{title.maturityRating}</span>
           <span>{title.runtime}</span>
         </div>
         <p className="hero-synopsis">{title.synopsis}</p>

@@ -371,11 +371,6 @@
   font-weight: 800;
 }
 
-.match {
-  color: var(--mint);
-  font-weight: 850;
-}
-
 .progress-track {
   overflow: hidden;
   width: 100%;

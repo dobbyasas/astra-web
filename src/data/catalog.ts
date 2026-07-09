@@ -17,9 +17,7 @@ export type MediaTitle = {
   tagline: string
   synopsis: string
   year: number
-  maturityRating: string
   runtime: string
-  match: number
   genres: string[]
   posterUrl: string
   backdropUrl: string
@@ -42,9 +40,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'A fugitive heir follows a dangerous path through faith, revenge, and impossible futures.',
     year: 2024,
-    maturityRating: 'PG-13',
     runtime: '2h 46m',
-    match: 98,
     genres: ['Sci-Fi', 'Epic', 'Drama'],
     progress: 34,
   },
@@ -55,9 +51,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'A missing archivist leaves behind a map to a hidden city where every street remembers a different century.',
     year: 2026,
-    maturityRating: 'TV-14',
     runtime: '8 episodes',
-    match: 96,
     genres: ['Mystery', 'Sci-Fi', 'Drama'],
     progress: 58,
     episodeCount: 8,
@@ -69,9 +63,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'A brilliant physicist leads a secret project and faces the moral aftershock of the atomic age.',
     year: 2023,
-    maturityRating: 'R',
     runtime: '3h',
-    match: 96,
     genres: ['Drama', 'Biography', 'History'],
   },
   {
@@ -81,9 +73,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'A chaotic crew runs the solar system’s most impossible restaurant while smuggling secrets between colonies.',
     year: 2025,
-    maturityRating: 'TV-PG',
     runtime: '10 episodes',
-    match: 91,
     genres: ['Comedy', 'Sci-Fi', 'Adventure'],
     episodeCount: 10,
   },
@@ -94,9 +84,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'A young investigator uncovers a buried secret that could unravel what remains of society.',
     year: 2017,
-    maturityRating: 'R',
     runtime: '2h 44m',
-    match: 94,
     genres: ['Sci-Fi', 'Noir', 'Thriller'],
     progress: 62,
   },
@@ -107,9 +95,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'Investigators in an Arctic research town discover every disappearance points back to the same signal.',
     year: 2026,
-    maturityRating: 'TV-MA',
     runtime: '6 episodes',
-    match: 89,
     genres: ['Crime', 'Mystery', 'Thriller'],
     episodeCount: 6,
   },
@@ -120,9 +106,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'A linguist races to communicate with mysterious visitors before global fear becomes irreversible.',
     year: 2016,
-    maturityRating: 'PG-13',
     runtime: '1h 56m',
-    match: 93,
     genres: ['Sci-Fi', 'Mystery', 'Drama'],
   },
   {
@@ -132,9 +116,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'Emergency dispatchers begin receiving calls from tomorrow and must decide which futures are worth saving.',
     year: 2024,
-    maturityRating: 'TV-14',
     runtime: '9 episodes',
-    match: 92,
     genres: ['Thriller', 'Drama', 'Sci-Fi'],
     progress: 22,
     episodeCount: 9,
@@ -146,9 +128,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'An exhausted laundromat owner tumbles through alternate lives while trying to hold her family together.',
     year: 2022,
-    maturityRating: 'R',
     runtime: '2h 20m',
-    match: 95,
     genres: ['Adventure', 'Comedy', 'Drama'],
   },
   {
@@ -158,9 +138,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'Miles Morales launches across the multiverse and collides with a team protecting its fragile web.',
     year: 2023,
-    maturityRating: 'PG',
     runtime: '2h 20m',
-    match: 97,
     genres: ['Animation', 'Action', 'Adventure'],
   },
   {
@@ -170,9 +148,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'A retired diver returns home after a storm exposes a submerged neighborhood and one impossible body.',
     year: 2026,
-    maturityRating: 'PG-13',
     runtime: '1h 48m',
-    match: 87,
     genres: ['Mystery', 'Drama'],
   },
   {
@@ -182,9 +158,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'When Earth loses its electrical grid, a family follows strange constellations toward a new civilization.',
     year: 2025,
-    maturityRating: 'TV-14',
     runtime: '8 episodes',
-    match: 90,
     genres: ['Drama', 'Adventure', 'Sci-Fi'],
     episodeCount: 8,
   },
@@ -195,9 +169,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'A courier with a ruined reputation takes a high-speed job through neon streets and old rivalries.',
     year: 2026,
-    maturityRating: 'PG-13',
     runtime: '1h 52m',
-    match: 86,
     genres: ['Action', 'Crime'],
   },
   {
@@ -207,9 +179,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'Restorers digitizing a lost broadcast discover the show is changing after each playback.',
     year: 2023,
-    maturityRating: 'TV-MA',
     runtime: '7 episodes',
-    match: 88,
     genres: ['Horror', 'Mystery'],
     episodeCount: 7,
   },
@@ -220,9 +190,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'A botanist protects the final living seeds on a moon where terraforming has begun to think for itself.',
     year: 2025,
-    maturityRating: 'PG',
     runtime: '1h 41m',
-    match: 84,
     genres: ['Adventure', 'Family', 'Sci-Fi'],
   },
   {
@@ -232,9 +200,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'A pop star and an ex-security engineer expose a surveillance ring hidden inside a global tour.',
     year: 2026,
-    maturityRating: 'TV-14',
     runtime: '10 episodes',
-    match: 85,
     genres: ['Drama', 'Thriller', 'Music'],
     episodeCount: 10,
   },
@@ -245,9 +211,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'A maintenance team becomes the only line of defense when a diplomatic moonbase locks down.',
     year: 2024,
-    maturityRating: 'PG-13',
     runtime: '1h 57m',
-    match: 82,
     genres: ['Comedy', 'Sci-Fi'],
   },
   {
@@ -257,9 +221,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'A family inheritance pulls three siblings into a coastal town where every fortune has a body count.',
     year: 2025,
-    maturityRating: 'TV-MA',
     runtime: '8 episodes',
-    match: 88,
     genres: ['Drama', 'Crime'],
     episodeCount: 8,
   },
@@ -270,9 +232,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'Two cartographers discover a blank region that redraws itself around whoever enters.',
     year: 2024,
-    maturityRating: 'PG-13',
     runtime: '1h 45m',
-    match: 83,
     genres: ['Fantasy', 'Mystery'],
   },
   {
@@ -282,9 +242,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'A mechanic returns to the circuit to save her father’s garage and settle a debt from the past.',
     year: 2026,
-    maturityRating: 'PG',
     runtime: '1h 50m',
-    match: 81,
     genres: ['Drama', 'Sport'],
   },
   {
@@ -294,9 +252,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'A young queen inherits a kingdom where every political message arrives with a deadly delay.',
     year: 2025,
-    maturityRating: 'TV-14',
     runtime: '9 episodes',
-    match: 86,
     genres: ['Fantasy', 'Political', 'Drama'],
     episodeCount: 9,
   },
@@ -307,9 +263,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'Runaways cross a corporate star route to reach a forbidden planet that may not exist.',
     year: 2026,
-    maturityRating: 'PG-13',
     runtime: '2h 4m',
-    match: 89,
     genres: ['Sci-Fi', 'Adventure'],
   },
   {
@@ -319,9 +273,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'Guests in a luxury hotel relive one day in reverse until they admit why they came.',
     year: 2024,
-    maturityRating: 'TV-14',
     runtime: '6 episodes',
-    match: 87,
     genres: ['Mystery', 'Drama'],
     episodeCount: 6,
   },
@@ -332,9 +284,7 @@ const seedTitles: SeedTitle[] = [
     synopsis:
       'A forger hired to invent a royal prophecy realizes the kingdom is making it come true.',
     year: 2025,
-    maturityRating: 'PG-13',
     runtime: '1h 54m',
-    match: 84,
     genres: ['Fantasy', 'Drama'],
   },
 ]

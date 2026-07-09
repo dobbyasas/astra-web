@@ -1,4 +1,4 @@
-import { ArrowLeft, Play, Plus, Star } from 'lucide-react'
+import { ArrowLeft, Play, Plus } from 'lucide-react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 
 import { getTitleById } from '@/lib/catalog'
@@ -29,15 +29,10 @@ export function TitlePage() {
             <ArrowLeft size={18} aria-hidden="true" />
             Back
           </Link>
-          <p className="eyebrow">
-            <Star size={16} fill="currentColor" aria-hidden="true" />
-            {title.match}% match
-          </p>
           <h1 id="detail-title">{title.name}</h1>
           <p className="detail-tagline">{title.tagline}</p>
           <div className="meta-line">
             <span>{title.year}</span>
-            <span className="pill">{title.maturityRating}</span>
             <span>{title.runtime}</span>
           </div>
           <p className="detail-synopsis">{title.synopsis}</p>

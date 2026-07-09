@@ -67,9 +67,8 @@ export function TitleCard({
         <div className="title-card-overlay">
           <h3>{title.name}</h3>
           <div className="card-meta">
-            <span className="match">{title.match}%</span>
             <span>{title.year}</span>
-            <span>{title.maturityRating}</span>
+            <span>{title.runtime}</span>
           </div>
           <span className="card-play-hint">
             <Play size={14} fill="currentColor" aria-hidden="true" />
