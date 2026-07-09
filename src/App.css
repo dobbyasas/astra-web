@@ -310,6 +310,15 @@
   z-index: 2;
   top: 12px;
   left: 12px;
+  justify-content: center;
+  width: 34px;
+  min-height: 34px;
+  padding: 0;
+}
+
+.kind-badge svg {
+  width: 16px;
+  height: 16px;
 }
 
 .card-save-button {

@@ -1,4 +1,4 @@
-import { Bookmark, Check, Play } from 'lucide-react'
+import { Bookmark, Check, Film, MonitorPlay, Play } from 'lucide-react'
 import type { MouseEvent } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -21,6 +21,7 @@ export function TitleCard({
   const token = useAuthStore((state) => state.token)
   const target =
     title.kind === 'series' ? `/series/${title.id}` : `/watch/${title.id}`
+  const KindIcon = title.kind === 'series' ? MonitorPlay : Film
 
   async function handleWatchlist(event: MouseEvent<HTMLButtonElement>) {
     event.preventDefault()
@@ -44,7 +45,9 @@ export function TitleCard({
     <article>
       <Link className="title-card" to={target} aria-label={title.name}>
         <img src={title.posterUrl} alt="" loading="lazy" />
-        <span className="kind-badge">{title.kind}</span>
+        <span className="kind-badge" aria-label={title.kind}>
+          <KindIcon size={16} aria-hidden="true" />
+        </span>
         <button
           className="card-save-button"
           type="button"
