@@ -1,13 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <linearGradient id="astra-mark-gradient" x1="11" x2="53" y1="57" y2="7">
+    <linearGradient id="astra-mark-gradient" x1="14" x2="50" y1="56" y2="8">
       <stop stop-color="#E5362F"/>
       <stop offset=".55" stop-color="#FF7A32"/>
       <stop offset="1" stop-color="#E8B85C"/>
     </linearGradient>
+    <linearGradient id="astra-orbit-gradient" x1="11" x2="55" y1="46" y2="18">
+      <stop stop-color="#E5362F" stop-opacity=".1"/>
+      <stop offset=".55" stop-color="#FF7A32" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#FFD17B" stop-opacity=".18"/>
+    </linearGradient>
   </defs>
   <rect width="64" height="64" rx="14" fill="#0B0C10"/>
-  <path fill="url(#astra-mark-gradient)" d="M32 6 57 58H43.6l-4.2-10.2H23.8L19.6 58H7L32 6Zm0 17.4-6.7 16.2h10.3L32 30.8l-3.4 8.8h9.7L32 23.4Z"/>
-  <path fill="#0B0C10" d="m26.6 39.6 4.9-12.2 4.9 12.2h-9.8Z"/>
-  <path fill="#FFD17B" d="M20.7 43.7h25.1l-3.3 7.7H24l-3.3-7.7Z" opacity=".95"/>
+  <path d="M11.5 42.7c9.4 6.6 28.9 4.9 39-3.4" fill="none" stroke="url(#astra-orbit-gradient)" stroke-linecap="round" stroke-width="3"/>
+  <path d="M16 55 32 9l16 46M23.6 34.2h16.8" fill="none" stroke="url(#astra-mark-gradient)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"/>
+  <path d="m32 9 3.1 8.8h-6.2L32 9Z" fill="#FFD17B" opacity=".95"/>
+  <circle cx="51" cy="18" r="3" fill="#FFD17B"/>
 </svg>

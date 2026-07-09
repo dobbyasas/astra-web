@@ -12,27 +12,44 @@ export function AstraLogo({ compact = false }: AstraLogoProps) {
           <defs>
             <linearGradient
               id="astra-mark-gradient"
-              x1="11"
-              x2="53"
-              y1="57"
-              y2="7"
+              x1="14"
+              x2="50"
+              y1="56"
+              y2="8"
             >
               <stop stopColor="#E5362F" />
               <stop offset="0.55" stopColor="#FF7A32" />
               <stop offset="1" stopColor="#E8B85C" />
             </linearGradient>
+            <linearGradient
+              id="astra-orbit-gradient"
+              x1="11"
+              x2="55"
+              y1="46"
+              y2="18"
+            >
+              <stop stopColor="#E5362F" stopOpacity="0.1" />
+              <stop offset="0.55" stopColor="#FF7A32" stopOpacity="0.95" />
+              <stop offset="1" stopColor="#FFD17B" stopOpacity="0.18" />
+            </linearGradient>
           </defs>
-          <rect width="64" height="64" rx="14" fill="#0B0C10" />
           <path
-            fill="url(#astra-mark-gradient)"
-            d="M32 6 57 58H43.6l-4.2-10.2H23.8L19.6 58H7L32 6Zm0 17.4-6.7 16.2h10.3L32 30.8l-3.4 8.8h9.7L32 23.4Z"
+            d="M11.5 42.7c9.4 6.6 28.9 4.9 39-3.4"
+            fill="none"
+            stroke="url(#astra-orbit-gradient)"
+            strokeLinecap="round"
+            strokeWidth="3"
           />
-          <path fill="#0B0C10" d="m26.6 39.6 4.9-12.2 4.9 12.2h-9.8Z" />
           <path
-            fill="#FFD17B"
-            d="M20.7 43.7h25.1l-3.3 7.7H24l-3.3-7.7Z"
-            opacity="0.95"
+            d="M16 55 32 9l16 46M23.6 34.2h16.8"
+            fill="none"
+            stroke="url(#astra-mark-gradient)"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="6"
           />
+          <path d="m32 9 3.1 8.8h-6.2L32 9Z" fill="#FFD17B" opacity="0.95" />
+          <circle cx="51" cy="18" r="3" fill="#FFD17B" />
         </svg>
       </span>
       {compact ? null : <span>Astra</span>}
