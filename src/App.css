@@ -545,13 +545,21 @@
   box-shadow: var(--shadow);
 }
 
-.player-frame img {
+.player-frame img,
+.player-video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.player-frame img {
   opacity: 0.68;
+}
+
+.player-video {
+  background: #000;
 }
 
 .player-frame::after {
@@ -563,12 +571,32 @@
     radial-gradient(circle at 72% 18%, rgba(255, 93, 61, 0.16), transparent 36%);
 }
 
+.player-frame--stream {
+  min-height: 78svh;
+}
+
+.player-frame--stream::after {
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.62), transparent 22%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.38), transparent 28%);
+}
+
 .player-overlay {
   position: relative;
   z-index: 1;
   display: grid;
   gap: 22px;
   padding: clamp(18px, 4vw, 42px);
+}
+
+.player-overlay--stream {
+  align-self: start;
+  pointer-events: none;
+}
+
+.player-overlay--stream .player-back {
+  pointer-events: auto;
 }
 
 .player-back {

@@ -20,8 +20,16 @@ export type PlaybackProgress = {
   updatedAt: string
 }
 
-const apiBaseUrl =
+export const apiBaseUrl =
   import.meta.env.VITE_API_URL?.replace(/\/$/, '') ?? 'http://192.168.0.16:4000'
+
+export function getServerMediaUrl(path: string) {
+  if (/^https?:\/\//i.test(path)) {
+    return path
+  }
+
+  return `${apiBaseUrl}${path.startsWith('/') ? path : `/${path}`}`
+}
 
 export async function register(email: string, password: string) {
   return request<AuthResponse>('/api/auth/register', {

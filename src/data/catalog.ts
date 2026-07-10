@@ -22,6 +22,7 @@ export type MediaTitle = {
   posterUrl: string
   backdropUrl: string
   progress?: number
+  streamPath?: string
   episodes?: Episode[]
 }
 
@@ -87,6 +88,20 @@ const seedTitles: SeedTitle[] = [
     runtime: '2h 44m',
     genres: ['Sci-Fi', 'Noir', 'Thriller'],
     progress: 62,
+    streamPath:
+      '/media/movies/Blade%20Runner%202049%20(2017)/Blade.Runner.2049.2017.720p.BluRay.x264-%5BYTS.AG%5D.mp4',
+  },
+  {
+    kind: 'movie',
+    name: 'The Nightmare Before Christmas',
+    tagline: 'A holiday dream with a crooked smile.',
+    synopsis:
+      'Jack Skellington stumbles into Christmas Town and turns two holidays into one strange musical nightmare.',
+    year: 1993,
+    runtime: '1h 16m',
+    genres: ['Animation', 'Fantasy', 'Musical'],
+    streamPath:
+      '/media/movies/The%20Nightmare%20Before%20Christmas%20(1993)/The.Nightmare.Before.Christmas.1993.1080p.hevc.mp4',
   },
   {
     kind: 'series',
