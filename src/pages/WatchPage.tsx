@@ -31,9 +31,8 @@ export function WatchPage() {
     () =>
       progressByKey[progressKey] ?? episode?.progress ?? title?.progress ?? 7,
   )
-  const streamUrl = title?.streamPath
-    ? getServerMediaUrl(title.streamPath)
-    : null
+  const streamPath = episode?.streamPath ?? title?.streamPath
+  const streamUrl = streamPath ? getServerMediaUrl(streamPath) : null
 
   useEffect(() => {
     if (title) {

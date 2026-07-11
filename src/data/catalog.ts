@@ -8,6 +8,7 @@ export type Episode = {
   runtime: string
   synopsis: string
   progress?: number
+  streamPath?: string
 }
 
 export type MediaTitle = {
@@ -26,10 +27,7 @@ export type MediaTitle = {
   episodes?: Episode[]
 }
 
-type SeedTitle = Omit<
-  MediaTitle,
-  'id' | 'posterUrl' | 'backdropUrl' | 'episodes'
-> & {
+type SeedTitle = Omit<MediaTitle, 'id' | 'posterUrl' | 'backdropUrl'> & {
   episodeCount?: number
 }
 
@@ -44,6 +42,18 @@ const seedTitles: SeedTitle[] = [
     runtime: '2h 46m',
     genres: ['Sci-Fi', 'Epic', 'Drama'],
     progress: 34,
+  },
+  {
+    kind: 'series',
+    name: 'Arcane',
+    tagline: 'Two sisters. One city about to break.',
+    synopsis:
+      'In Piltover and Zaun, invention, power, and old wounds pull two sisters onto opposite sides of a growing war.',
+    year: 2021,
+    runtime: '18 episodes',
+    genres: ['Animation', 'Action', 'Fantasy'],
+    progress: 1,
+    episodes: createArcaneEpisodes(),
   },
   {
     kind: 'series',
@@ -335,11 +345,59 @@ export const catalog: MediaTitle[] = seedTitles.map((title, index) => {
     posterUrl,
     backdropUrl,
     episodes:
-      title.kind === 'series'
+      title.episodes ??
+      (title.kind === 'series'
         ? createEpisodes(id, title.episodeCount ?? 8, title.progress)
-        : undefined,
+        : undefined),
   }
 })
+
+function createArcaneEpisodes(): Episode[] {
+  const episodes = [
+    [1, 1, 'Welcome to the Playground', 'h265'],
+    [1, 2, 'Some Mysteries Are Better Left Unsolved', 'h265'],
+    [1, 3, 'The Base Violence Necessary for Change', 'h265'],
+    [1, 4, 'Happy Progress Day!', 'h265'],
+    [1, 5, 'Everybody Wants to Be My Enemy', 'h265'],
+    [1, 6, 'When These Walls Come Tumbling Down', 'h265'],
+    [1, 7, 'The Boy Savior', 'h265'],
+    [1, 8, 'Oil and Water', 'h265'],
+    [1, 9, 'The Monster You Created', 'h265'],
+    [2, 1, 'Heavy Is the Crown', 'h265'],
+    [2, 2, 'Watch It All Burn', 'h265'],
+    [2, 3, 'Finally Got the Name Right', 'h265'],
+    [2, 4, 'Paint the Town Blue', 'h265'],
+    [2, 5, 'Blisters and Bedrock', 'h265'],
+    [2, 6, 'The Message Hidden Within the Pattern', 'h265'],
+    [2, 7, "Pretend Like It's the First Time", 'x264'],
+    [2, 8, 'Killing Is a Cycle', 'h265'],
+    [2, 9, 'The Dirt Under Your Nails', 'x264'],
+  ] as const
+
+  return episodes.map(([season, episode, title, codec]) => {
+    const episodeCode = `S${String(season).padStart(2, '0')}E${String(
+      episode,
+    ).padStart(2, '0')}`
+    const fileName = `Arcane - ${episodeCode} - ${title} - ${codec} AC3.mp4`
+
+    return {
+      id: `arcane-s${String(season).padStart(2, '0')}e${String(
+        episode,
+      ).padStart(2, '0')}`,
+      title,
+      season,
+      episode,
+      runtime: '42m',
+      synopsis:
+        season === 1
+          ? 'Piltover and Zaun move closer to open conflict as family loyalties fracture.'
+          : 'The war reshapes every alliance as old choices demand a cost.',
+      streamPath: `/media/series/Arcane%20(2021)/Season%20${String(
+        season,
+      ).padStart(2, '0')}/${encodeURIComponent(fileName)}`,
+    }
+  })
+}
 
 function createEpisodes(
   seriesId: string,
