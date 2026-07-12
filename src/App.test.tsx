@@ -36,22 +36,20 @@ describe('Astra web shell', () => {
       screen.getByRole('heading', { name: 'Movies & Series' }),
     ).toBeInTheDocument()
     expect(
-      screen.getAllByRole('link', { name: 'Dune: Part Two' })[0],
-    ).toHaveAttribute('href', '/watch/dune-part-two')
+      screen.getAllByRole('link', { name: 'Blade Runner 2049' })[0],
+    ).toHaveAttribute('href', '/watch/blade-runner-2049')
   })
 
   it('opens a series page with playable episodes', () => {
-    renderApp('/series/the-meridian')
+    renderApp('/series/arcane')
 
-    expect(
-      screen.getByRole('heading', { name: 'The Meridian' }),
-    ).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Arcane' })).toBeInTheDocument()
     expect(
       screen.getByRole('heading', { name: 'Episodes' }),
     ).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /S01E01/ })).toHaveAttribute(
       'href',
-      '/watch/the-meridian/the-meridian-s01e01',
+      '/watch/arcane/arcane-s01e01',
     )
   })
 })

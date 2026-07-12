@@ -21,7 +21,8 @@ export type PlaybackProgress = {
 }
 
 export const apiBaseUrl =
-  import.meta.env.VITE_API_URL?.replace(/\/$/, '') ?? 'http://192.168.0.192:4000'
+  import.meta.env.VITE_API_URL?.replace(/\/$/, '') ??
+  'http://100.93.250.104:4000'
 
 export function getServerMediaUrl(path: string) {
   if (/^https?:\/\//i.test(path)) {

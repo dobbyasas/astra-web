@@ -334,23 +334,29 @@ const episodeSynopses = [
   'The truth behind the first disappearance begins to fracture the team.',
 ]
 
-export const catalog: MediaTitle[] = seedTitles.map((title, index) => {
-  const id = slugify(title.name)
-  const posterUrl = posterFor(id, index)
-  const backdropUrl = backdropFor(id, index)
+export const catalog: MediaTitle[] = seedTitles
+  .filter((title) => title.streamPath ?? hasPlayableEpisodes(title))
+  .map((title, index) => {
+    const id = slugify(title.name)
+    const posterUrl = posterFor(id, index)
+    const backdropUrl = backdropFor(id, index)
 
-  return {
-    ...title,
-    id,
-    posterUrl,
-    backdropUrl,
-    episodes:
-      title.episodes ??
-      (title.kind === 'series'
-        ? createEpisodes(id, title.episodeCount ?? 8, title.progress)
-        : undefined),
-  }
-})
+    return {
+      ...title,
+      id,
+      posterUrl,
+      backdropUrl,
+      episodes:
+        title.episodes ??
+        (title.kind === 'series'
+          ? createEpisodes(id, title.episodeCount ?? 8, title.progress)
+          : undefined),
+    }
+  })
+
+function hasPlayableEpisodes(title: SeedTitle) {
+  return title.episodes?.some((episode) => episode.streamPath)
+}
 
 function createArcaneEpisodes(): Episode[] {
   const episodes = [
