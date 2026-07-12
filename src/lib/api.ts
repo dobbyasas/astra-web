@@ -20,6 +20,15 @@ export type PlaybackProgress = {
   updatedAt: string
 }
 
+export type MediaLibraryItem = {
+  streamPath: string
+}
+
+export type MediaLibrary = {
+  movies: MediaLibraryItem[]
+  series: MediaLibraryItem[]
+}
+
 export const apiBaseUrl =
   import.meta.env.VITE_API_URL?.replace(/\/$/, '') ??
   'http://100.93.250.104:4000'
@@ -77,6 +86,10 @@ export async function removeFromWatchlist(token: string, titleId: string) {
 
 export async function getPlaybackProgress(token: string) {
   return request<{ items: PlaybackProgress[] }>('/api/me/progress', {}, token)
+}
+
+export async function getMediaLibrary() {
+  return request<MediaLibrary>('/api/media')
 }
 
 export async function savePlaybackProgress(

@@ -2,8 +2,11 @@ import { catalog, type Episode, type MediaTitle } from '@/data/catalog'
 
 export const PAGE_SIZE = 20
 
-export function getTitleById(titleId: string | undefined) {
-  return catalog.find((title) => title.id === titleId)
+export function getTitleById(
+  titleId: string | undefined,
+  titles: MediaTitle[] = catalog,
+) {
+  return titles.find((title) => title.id === titleId)
 }
 
 export function getEpisodeById(
@@ -16,10 +19,11 @@ export function getEpisodeById(
 export function getRandomTitleBatch(
   existingTitleIds: string[],
   limit = PAGE_SIZE,
+  titles: MediaTitle[] = catalog,
 ) {
   const existing = new Set(existingTitleIds)
   const unseenTitles = shuffle(
-    catalog.filter((title) => !existing.has(title.id)),
+    titles.filter((title) => !existing.has(title.id)),
   )
   const batch = unseenTitles.slice(0, limit)
 
@@ -27,17 +31,17 @@ export function getRandomTitleBatch(
     return batch
   }
 
-  return [...batch, ...shuffle(catalog).slice(0, limit - batch.length)]
+  return [...batch, ...shuffle(titles).slice(0, limit - batch.length)]
 }
 
-export function searchTitles(query: string) {
+export function searchTitles(query: string, titles: MediaTitle[] = catalog) {
   const normalizedQuery = query.trim().toLowerCase()
 
   if (!normalizedQuery) {
     return []
   }
 
-  return catalog.filter((title) => {
+  return titles.filter((title) => {
     const haystack = [
       title.name,
       title.kind,
@@ -54,8 +58,9 @@ export function searchTitles(query: string) {
 
 export function getContinueWatchingTitles(
   progressByKey: Record<string, number>,
+  titles: MediaTitle[] = catalog,
 ) {
-  return catalog
+  return titles
     .map((title) => ({
       ...title,
       progress: getTitleProgress(title, progressByKey),

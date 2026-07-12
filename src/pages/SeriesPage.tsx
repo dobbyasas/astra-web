@@ -1,11 +1,13 @@
 import { ArrowLeft, Play } from 'lucide-react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 
+import { usePlayableCatalog } from '@/hooks/usePlayableCatalog'
 import { getEpisodeLabel, getTitleById } from '@/lib/catalog'
 
 export function SeriesPage() {
   const { titleId } = useParams()
-  const title = getTitleById(titleId)
+  const { titles } = usePlayableCatalog()
+  const title = getTitleById(titleId, titles)
 
   if (!title || title.kind !== 'series') {
     return <Navigate to="/" replace />

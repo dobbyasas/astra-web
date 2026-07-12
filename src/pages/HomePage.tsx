@@ -3,7 +3,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 
 import { TitleCard } from '@/components/TitleCard'
-import { catalog, type MediaTitle } from '@/data/catalog'
+import type { MediaTitle } from '@/data/catalog'
+import { usePlayableCatalog } from '@/hooks/usePlayableCatalog'
 import { getPlaybackProgress, getWatchlist } from '@/lib/api'
 import {
   getContinueWatchingTitles,
@@ -25,6 +26,7 @@ export function HomePage() {
   const openDialog = useAuthStore((state) => state.openDialog)
   const token = useAuthStore((state) => state.token)
   const localProgress = usePlaybackStore((state) => state.progressByKey)
+  const { titles } = usePlayableCatalog()
   const [query, setQuery] = useState('')
   const [feed, setFeed] = useState<FeedItem[]>(() =>
     toFeedItems(getRandomTitleBatch([], PAGE_SIZE)),
@@ -65,17 +67,20 @@ export function HomePage() {
   )
 
   const continueWatching = useMemo(
-    () => getContinueWatchingTitles(progressByKey),
-    [progressByKey],
+    () => getContinueWatchingTitles(progressByKey, titles),
+    [progressByKey, titles],
   )
   const savedTitles = useMemo(
-    () => catalog.filter((title) => watchlistIds.has(title.id)),
-    [watchlistIds],
+    () => titles.filter((title) => watchlistIds.has(title.id)),
+    [titles, watchlistIds],
   )
   const isSearching = Boolean(query.trim())
 
   const visibleTitles = isSearching
-    ? searchTitles(query).map((title) => ({ instanceId: title.id, title }))
+    ? searchTitles(query, titles).map((title) => ({
+        instanceId: title.id,
+        title,
+      }))
     : feed
 
   const loadMore = useCallback(() => {
@@ -85,10 +90,15 @@ export function HomePage() {
         getRandomTitleBatch(
           currentFeed.map((item) => item.title.id),
           PAGE_SIZE,
+          titles,
         ),
       ),
     ])
-  }, [])
+  }, [titles])
+
+  useEffect(() => {
+    setFeed(toFeedItems(getRandomTitleBatch([], PAGE_SIZE, titles)))
+  }, [titles])
 
   useEffect(() => {
     const sentinel = sentinelRef.current

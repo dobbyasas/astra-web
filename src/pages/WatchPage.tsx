@@ -2,6 +2,7 @@ import { ArrowLeft, Maximize, Pause, Volume2, VolumeX } from 'lucide-react'
 import { useEffect, useMemo, useState, type SyntheticEvent } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 
+import { usePlayableCatalog } from '@/hooks/usePlayableCatalog'
 import { getServerMediaUrl, savePlaybackProgress } from '@/lib/api'
 import {
   getEpisodeById,
@@ -14,7 +15,8 @@ import { usePlaybackStore } from '@/store/usePlaybackStore'
 
 export function WatchPage() {
   const { episodeId, titleId } = useParams()
-  const title = getTitleById(titleId)
+  const { titles } = usePlayableCatalog()
+  const title = getTitleById(titleId, titles)
   const episode = getEpisodeById(title, episodeId)
   const muted = usePlaybackStore((state) => state.muted)
   const progressByKey = usePlaybackStore((state) => state.progressByKey)
